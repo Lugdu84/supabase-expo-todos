@@ -1,12 +1,20 @@
-import { StyleSheet } from 'react-native';
+import { Button, StyleSheet } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
+import { supabase } from '@/lib/supabase';
 
-export default function ListScreen() {
+export default function ProfileScreen() {
+	const handleLogout = () => {
+		supabase.auth.signOut();
+	};
+
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Ma liste</Text>
+			<Text style={styles.title}>Mon Profile</Text>
+			<Button
+				title="Déconnexion"
+				onPress={handleLogout}
+			/>
 		</View>
 	);
 }
